@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        #cookieMessage {
+            font-size: 18px;
+            margin-top: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Cookie Page</h1>
+    <button onclick="setCookie()">Set Cookie</button>
+    <div id="cookieMessage"></div>
+
+    <script>
+        // Function to set a cookie with name, value, and expiration time (1 day)
+        function setCookie() {
+            var expirationDate = new Date();
+            expirationDate.setTime(expirationDate.getTime() + (24 * 60 * 60 * 1000)); // 1 day in milliseconds
+            document.cookie = "user=Guadalupe; expires=" + expirationDate.toUTCString() + "; path=/";
+            displayCookie();
+        }
+
+        // Function to retrieve and display the cookie
+        function displayCookie() {
+            var cookies = document.cookie;
+            var message = cookies ? "Cookie Value: " + cookies : "No cookie found.";
+            document.getElementById("cookieMessage").textContent = message;
+        }
+
+        // Automatically display the cookie value on page load
+        window.onload = function() {
+            displayCookie();
+        }
+    </script>
+</body>
+</html>

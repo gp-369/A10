@@ -15,6 +15,18 @@
             margin-top: 20px;
             color: #333;
         }
+        button {
+            font-size: 16px;
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
@@ -23,25 +35,26 @@
     <div id="cookieMessage"></div>
 
     <script>
-        // Function to set a cookie with name, value, and expiration time (1 day)
+        // Function to set a cookie
         function setCookie() {
-            var expirationDate = new Date();
-            expirationDate.setTime(expirationDate.getTime() + (24 * 60 * 60 * 1000)); // 1 day in milliseconds
-            document.cookie = "user=Guadalupe; expires=" + expirationDate.toUTCString() + "; path=/";
+            // set cookie
+            document.cookie = "user=Guadalupe; expires=" + new Date(new Date().getTime() + 24 * 60 * 60 * 1000).toUTCString();
             displayCookie();
         }
 
-        // Function to retrieve and display the cookie
+        // function displays cookie
         function displayCookie() {
-            var cookies = document.cookie;
-            var message = cookies ? "Cookie Value: " + cookies : "No cookie found.";
+            // Get cookies stored in the browser
+            const cookies = document.cookie;
+            const message = cookies ? "Cookie Value: " + cookies : "No cookie found.";
             document.getElementById("cookieMessage").textContent = message;
         }
 
-        // Automatically display the cookie value on page load
+        // Displays cookie value
         window.onload = function() {
             displayCookie();
         }
     </script>
 </body>
 </html>
+
